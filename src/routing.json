@@ -1,0 +1,6 @@
+{
+    "login": "/login",
+    "payments": "/payments",
+    "finaces": "/finaces",
+    "desktop": "/desktop"
+}

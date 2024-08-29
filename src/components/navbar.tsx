@@ -1,17 +1,45 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@nextui-org/react"
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Dropdown, DropdownTrigger, Avatar, DropdownMenu, DropdownItem } from "@nextui-org/react"
 
-export const Navigation:React.FunctionComponent = (props:any) =>{
-    return <Navbar>
+import routing from "../routing.json";
+
+export const Navigation: React.FunctionComponent = (props: any) => {
+    return <Navbar isBordered={true} >
         <NavbarBrand>
             <span>BANK</span>
-        </NavbarBrand>       
+        </NavbarBrand>
         <NavbarContent>
             <NavbarItem>
-                <Link href="#">Desktop</Link>
+                <Link href={routing.desktop}>Desktop</Link>
             </NavbarItem>
             <NavbarItem>
-                <Link href="#">Finances</Link>
+                <Link href={routing.payments}>Payments</Link>
             </NavbarItem>
+            <NavbarItem>
+                <Link href={routing.finaces}>Finances</Link>
+            </NavbarItem>
+
+            <NavbarContent as="div" justify="end">
+                <Dropdown placement="bottom-end">
+                    <DropdownTrigger>
+                        <Avatar
+                            isBordered
+                            as="button"
+                            className="transition-transform"
+                            size="sm"
+                        />
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Profile Actions" variant="flat">
+                        <DropdownItem key="profile" className="h-14 gap-2">
+                            <p className="font-semibold">Signed in as</p>
+                            <p className="font-semibold">zoey@example.com</p>
+                        </DropdownItem>
+                        <DropdownItem key="settings">Settings</DropdownItem>
+                        <DropdownItem key="logout" color="danger">
+                            Log Out
+                        </DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
+            </NavbarContent>
         </NavbarContent>
     </Navbar>
 }
